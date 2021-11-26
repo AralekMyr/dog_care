@@ -1,0 +1,12 @@
+Pillow>=6.2.0
+phonenumbers>=8.10.19
+python-dateutil>=2.8.0
+requests>=2.22
+Django==3.0.3
+django-cors-headers>=3.0.1
+djangorestframework>=3.9.2
+psycopg2-binary>=2.8.4,<2.9
+pytz>=2019.1
+djangorestframework_simplejwt>=4.3.0
+fcm-django==0.3.4
+django-silk>=4.2.0
