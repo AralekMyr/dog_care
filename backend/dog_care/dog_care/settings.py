@@ -127,3 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SILKY_PYTHON_PROFILER = True
+INSTALLED_APPS.append("silk")
+MIDDLEWARE.append("silk.middleware.SilkyMiddleware")
+
