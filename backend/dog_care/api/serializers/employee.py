@@ -1,5 +1,3 @@
-from rest_framework import serializers
-
 from api.models.employee import Employee
 from api.serializers.care import CareSerializer
 from api.serializers.center import CenterSerializer
