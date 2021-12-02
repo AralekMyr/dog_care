@@ -6,7 +6,7 @@ from api.models.person import Person
 
 class Dog(models.Model):
     name = models.CharField(max_length=100)
-    owner = models.ForeignKey(Person, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="dogs")
     birth_date = models.DateField(null=False)
     breed = models.ForeignKey(Breed, on_delete=models.CASCADE)
 

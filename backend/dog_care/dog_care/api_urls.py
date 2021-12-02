@@ -4,6 +4,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from api.views.center.center import CenterView
 from api.views.center.center_cares import CenterCaresView
 from api.views.center.center_employees import CenterEmployeesView
+from api.views.dog import DogView, DogDetailView
 from api.views.user import UserView, UserDetailView
 
 urlpatterns = [
@@ -15,4 +16,6 @@ urlpatterns = [
     path('centers/<int:id>/cares', CenterCaresView.as_view(), name="list_centers_cares"),
     path('centers/<int:id>/employees', CenterEmployeesView.as_view(), name="list_centers_employees"),
 
+    path('user/dogs', DogView.as_view(), name="user_dogs"),
+    path('user/dogs/<int:id>', DogDetailView.as_view(), name="user_dog_detail"),
 ]
