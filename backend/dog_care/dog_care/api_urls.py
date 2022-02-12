@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+from api.views.appointment import AppointmentView
 from api.views.center.center import CenterView
 from api.views.center.center_cares import CenterCaresView
 from api.views.center.center_employees import CenterEmployeesView
@@ -18,4 +19,6 @@ urlpatterns = [
 
     path('user/dogs', DogView.as_view(), name="user_dogs"),
     path('user/dogs/<int:id>', DogDetailView.as_view(), name="user_dog_detail"),
+
+    path('appointments', AppointmentView.as_view(), name="appointments"),
 ]

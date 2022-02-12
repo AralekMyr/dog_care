@@ -10,7 +10,9 @@ def get_birth_date(request, dog=None):
     if not birth_date and dog:
         return None
     try:
-        return datetime.strptime(birth_date, '%d/%m/%Y').date()
+        birth_date = datetime.strptime(birth_date, '%d/%m/%Y').date()
+        if birth_date >= datetime.now().date():
+            raise ValueError
     except(ValueError, TypeError):
         raise ValidationError("Invalid birth_date")
 

@@ -8,3 +8,13 @@ class Person(models.Model):
 
     def __str__(self):
         return f"({self.id}) {self.user.first_name} {self.user.last_name} aka {self.user.username}"
+
+    def is_employee(self):
+        return hasattr(self, 'employee')
+
+    def as_employee(self):
+        from api.models.employee import Employee
+        try:
+            return Employee.objects.get(person_ptr=self)
+        except Employee.DoesNotExist:
+            return None

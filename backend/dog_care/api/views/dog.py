@@ -25,9 +25,10 @@ class DogView(ListCreateAPIView):
         birth_date = dog_service.get_birth_date(request)
         breed = dog_service.get_breed(request)
 
-        dog = Dog.objects.create(name=name, birth_date=birth_date, breed=breed, owner=person)
+        with transaction.atomic():
+            dog = Dog.objects.create(name=name, birth_date=birth_date, breed=breed, owner=person)
+            data = self.get_serializer(dog).data
 
-        data = self.get_serializer(dog).data
         return Response(data, status=status.HTTP_201_CREATED)
 
 
@@ -52,8 +53,9 @@ class DogDetailView(RetrieveUpdateDestroyAPIView):
                 dog.breed = breed
             if birth_date:
                 dog.birth_date = birth_date
+
             dog.save()
             dog.refresh_from_db()
+            data = self.get_serializer(dog).data
 
-        data = self.get_serializer(dog).data
         return Response(data, status=status.HTTP_200_OK)
